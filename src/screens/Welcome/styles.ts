@@ -1,38 +1,50 @@
+import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export const WelcomeContainer = styled.View`
   flex: 1;
-  padding: 80px 50px;
-  justify-content: space-between;
-  align-items: center;
+  background-color: ${({ theme }) => theme.colors.background};
 `;
 
+//Header
 export const WelcomeHeader = styled.View`
-  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  height: 50%;
 `;
+
+export const WelcomeLogo = styled.Image`
+  width: 48px;
+  height: 60px;
+  border-radius: 5px;
+`;
+
+export const ImageView = styled.View``;
 
 const TitleStyle = styled.Text`
-  color: #7c99af;
+  color: ${(props) => props.theme.colors.title};
 `;
 
-export const WelcomeTitle = styled(TitleStyle)`
-  font-size: 50px;
-  font-weight: bold;
+//Message
+export const MessageWrapper = styled.View`
+  background-color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.shape};
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 0 10px;
+  border-radius: 8px;
 `;
 
-export const WelcomeSubtitle = styled(TitleStyle)`
-  font-weight: 30px;
+export const Icon = styled(MaterialIcons)`
+  font-size: ${RFValue(80)}px;
+  color: ${(props) => props.theme.colors.shape};
 `;
 
 export const WelcomeText = styled.Text`
-  font-size: 40px;
+  font-size: ${RFValue(22)}px;
   text-align: center;
-  color: #64bcce;
-`;
-
-export const WelcomeButtons = styled.View`
-  flex-direction: column;
-  align-items: center;
-
-  justify-content: space-evenly;
+  color: ${(props) => props.theme.colors.shape};
 `;

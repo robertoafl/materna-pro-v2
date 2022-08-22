@@ -1,33 +1,39 @@
-import React from "react";
+import React, { useContext } from "react";
+import { ThemeContext } from "styled-components";
 import { Button } from "../../components/Button";
+import { LogIn } from "../LogIn";
+import { SignIn } from "../SignIn";
 import {
-  WelcomeButtons,
   WelcomeContainer,
   WelcomeHeader,
-  WelcomeSubtitle,
   WelcomeText,
-  WelcomeTitle,
+  MessageWrapper,
+  WelcomeLogo,
+  Icon,
 } from "./styles";
+import { StackNavigationProp } from "@react-navigation/stack";
 
-export function Welcome() {
+interface WelcomeProps {
+  navigation: StackNavigationProp<any, any>;
+}
+
+export function Welcome({ navigation }: WelcomeProps) {
+  const { colors } = useContext(ThemeContext);
   return (
     <WelcomeContainer>
       <WelcomeHeader>
-        <WelcomeTitle>materna:pro</WelcomeTitle>
-        <WelcomeSubtitle>Pré-natal Odontológico</WelcomeSubtitle>
-      </WelcomeHeader>
-      <WelcomeText>
-        Acompanhamento pré-natal odontológico e educação em saúde da gestante e
-        do bebê.
-      </WelcomeText>
-      <WelcomeButtons>
-        <Button text="Cadastro" backgroundColor="#64BCCE" textColor="#FDE426" />
-        <Button
-          text="Limpar Cache"
-          backgroundColor="#EB435A"
-          textColor="#FFF"
+        <WelcomeLogo
+          source={require("../../assets/img/materna_pro_logo.png")}
+          style={{ flex: 1, resizeMode: "contain", width: 400, height: 200 }}
         />
-      </WelcomeButtons>
+      </WelcomeHeader>
+      <MessageWrapper>
+        <Icon name="pregnant-woman" />
+        <WelcomeText>
+          Acompanhamento pré-natal odontológico e educação em saúde da gestante
+          e do bebê.
+        </WelcomeText>
+      </MessageWrapper>
     </WelcomeContainer>
   );
 }
